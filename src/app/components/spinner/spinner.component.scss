@@ -1,0 +1,227 @@
+.spinner-full{
+    background-color: rgba(36, 36, 36, 1); 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+}
+.container-spinner {
+    width: 292px;
+    height: 237px;
+    transform: scale(.5); 
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .head-rick {
+        width: auto;
+        height: 0px;
+        background-image: url('/assets/images/rick-head.png');
+        background-repeat: no-repeat;
+        background-position: center 169px;
+        z-index: 1;
+        position: relative;
+        overflow: hidden;
+        margin-top: 169px;
+        animation: in-head .6s ease forwards;
+        animation-delay: .8s; 
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 5px;
+            background-image: url('/assets/images/rick-edge.png');
+            background-repeat: no-repeat;
+            background-position: center; 
+        } 
+        &::after {
+            left: 40%;
+            top: 80%;
+            animation: move-edge 1.5s ease-in infinite;
+            animation-delay: .9s;
+        } 
+        &::before {
+            right: 40%;
+            top: 80%;
+            animation: move-edge 1.5s ease-in infinite;
+            animation-delay: .9s;
+        }
+    }
+
+    .charco {
+        width: 0%;
+        height: 0px;
+        background-image: url('/assets/images/puddle.png');
+        background-size: 292px 68px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: -40px auto 0;
+        animation: inPuddle .3s ease forwards;
+        border-radius: 100%;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 68px;
+            margin: auto;
+            background-color: black;
+            width: 43%;
+            border: 1px solid rgb(212, 255, 0);
+            height: 20px;
+            border-radius: 100%;
+            transform: scale(0);
+            animation: inDark .9s ease forwards;
+            animation-delay: .4s;
+        }
+    }
+}
+
+.removeSpinner {
+    .head-rick {
+        animation: out-head .8s ease forwards !important; 
+        &::after { 
+            animation: none !important; 
+        } 
+        &::before { 
+            animation: none !important; 
+        }
+    }
+    .charco { 
+        &::after{
+            animation: outDark .6s ease forwards !important;
+            animation-delay: .1s !important;
+        }
+        animation: outPuddle 1s ease forwards !important; 
+    }
+}
+
+@keyframes inPuddle {
+    from {
+        width: 0%;
+        height: 0px;
+    }
+
+    to {
+        width: 100%;
+        height: 68px;
+    }
+}
+
+@keyframes outPuddle {
+    from{
+        width: 100%;
+        height: 68px;
+    }
+    90%{
+        width: 100%;
+        height: 68px;
+    }
+    to{
+        width: 0%;
+        height: 0px;
+    }
+}
+
+@keyframes inDark {
+    from {
+        transform: scale(0);
+        border: 1px solid rgb(212, 255, 0);
+        background-color: black;
+    }
+
+    80% {
+        transform: scale(1.5);
+        border: 4px solid rgb(212, 255, 0);
+        background-color: black;
+    }
+
+    90% {
+        transform: scale(1.5);
+        border: 4px solid rgb(212, 255, 0);
+        background-color: black;
+    }
+
+    100% {
+        transform: scale(1);
+        border: 1px solid rgb(212, 255, 0);
+        background-color: rgb(212, 255, 0);
+    }
+}
+
+@keyframes outDark {
+    from {
+        transform: scale(1);
+        border: 1px solid rgb(212, 255, 0);
+        background-color: rgb(212, 255, 0); 
+    }
+
+    80% {
+        transform: scale(1.5);
+        border: 4px solid rgb(212, 255, 0);
+        background-color: black;
+    }
+
+    90% {
+        transform: scale(1.5);
+        border: 4px solid rgb(212, 255, 0);
+        background-color: black;
+    }
+
+    100% {
+        transform: scale(0);
+        border: 1px solid rgb(212, 255, 0);
+        background-color: black;
+    }
+}
+
+@keyframes in-head {
+    from {
+        height: 0;
+        margin-top: 169px;
+        background-position: center 169px;
+    }
+ 
+    to {
+        height: 169px;
+        margin-top: 0px;
+        background-position: center 0px;
+    }
+}
+
+@keyframes out-head {
+    from {
+        height: 169px;
+        margin-top: 0px;
+        background-position: center 0px;
+    }
+    80%{
+        height: 169px;
+        margin-top: 0px;
+        background-position: center 0px;
+    }
+    to {
+        height: 0;
+        margin-top: 169px;
+        background-position: center 169px;
+    }
+}
+
+@keyframes move-edge {
+    from {
+        transform: translateX(10px);
+    }
+
+    50% {
+        transform: translateX(-10px);
+    }
+
+    to {
+        transform: translateX(10px);
+    }
+}

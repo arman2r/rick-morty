@@ -1,0 +1,78 @@
+<div class="flex-wrap align-center-x align-center-y w-100 h-100">
+  <div class="container d-flex align-center-y h-100">
+    <ul #listCharacters class="container-list h-100">
+      <div
+        class="w-100 d-flex flex-wrap align-between align-center-x align-center-y haeder-filter"
+      >
+        <div class="buscador d-flex align-center-x align-center-y">
+          <input type="text" placeholder="Buscar por nombre, especie y tipo" />
+          <i class="material-icons">search</i>
+        </div>
+        <div class="options-filter">
+          <div class="content-submenu">
+            <button
+              #btnSubmenu
+              (click)="openSubmenu(btnSubmenu)"
+              class="btn-drop d-flex flex-row align-center-x align-center-y"
+              style="gap: 10px"
+            > 
+              <i class="material-icons">tune</i>
+            </button>
+            
+          </div>
+          <div class="submenu-filter" *ngIf="openMenu">
+            <ul>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por alive</span>
+              </li>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por dead</span>
+              </li>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por unknown</span>
+              </li>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por female</span>
+              </li>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por male</span>
+              </li>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por genderless</span>
+              </li>
+              <li class="d-flex flex-row align-center-x">
+                <input type="checkbox" />
+                <span>Filtrar por unknown</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <app-spinner #spinner [showSpinner]="isShowSpinner"></app-spinner>
+      <div class="d-flex flex-column" *ngIf="!isShowSpinner">
+        <ng-container *ngFor="let item of characters; let i = index">
+          <app-item-list
+            class="w-100 animate__animated animate__fadeInUp"
+            [style]="'animation-delay:' + i * 0.02 + 's'"
+            [results]="item"
+            (statusEvent)="itemStatus($event)"
+          ></app-item-list>
+        </ng-container>
+        <div
+          *ngIf="isLoading"
+          #lastItem
+          class="d-flex w-100"
+          style="color: #fff"
+        >
+          Loading...
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>

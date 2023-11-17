@@ -1,0 +1,28 @@
+<li [id]="results.id" class="w-100 item-pattern">
+  <div
+    class="w-100 d-flex flex-row align-center-x align-center-y align-between content-item"
+  >
+    <div class="d-flex flex-row align-center-x align-center-y">
+      <span class="avatar">
+        <div class="border-avatar"></div>
+        <img [src]="results.image" alt="" />
+      </span>
+      <div class="description-txt">
+        <h4>{{ results.name }}</h4>
+        <sub>{{ results.species }}</sub>
+        <h4>
+          <sub>{{ results.gender }}</sub>
+        </h4>
+        <div class="d-flex flex-row align-center-x" style="gap: 10px;">
+          <span
+            class="status-circle"
+            [ngStyle]="{ 'background-color:green': results.status === 'Alive' }"
+          ></span>
+          <sub>Status</sub>
+        </div>
+      </div>
+    </div>
+    <a class="self-btn" href="#"><i class="material-icons">chevron_right</i>
+    </a>
+  </div>
+</li>
