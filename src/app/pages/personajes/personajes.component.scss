@@ -1,12 +1,3 @@
-.container-list {
-    width: 100%;
-    position: relative;
-
-    @media(min-width:992px) {
-        width: 50%;
-    }
-}
-
 .haeder-filter{
     padding: 40px 0 20px;
 }
@@ -51,6 +42,14 @@
             width: 260px;
         }
     }
+    @media(max-width:439px){
+        width: 100%;
+        &:hover{
+            input{
+                width: 100%;
+            }
+        }
+    }
 }
 
 .options-filter{
@@ -62,7 +61,11 @@
         border-radius: 5px;
         padding: 8px 12px;
         box-sizing: border-box;
-        cursor: pointer;
+        cursor: pointer;   
+    }
+    @media(max-width:439px){
+        width: 100%;
+        padding: 10px 0;
     }
 }
 
@@ -88,5 +91,8 @@
         span{
             font-size: .9rem;
         }
+    }
+    @media(max-width:439px){
+        top: 135px;
     }
 }

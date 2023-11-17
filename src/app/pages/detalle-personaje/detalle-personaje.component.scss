@@ -1,0 +1,132 @@
+.content-items {
+    gap: 20px;
+    align-items: stretch;
+}
+
+.container-list-detail {
+    width: 100%;
+    position: relative;
+    color: #fff;
+
+    @media(min-width:992px) {
+        width: 70%;
+    }
+
+}
+
+.btn-icon{
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    padding: 20px 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    i{
+        color: #fff;
+        font-size: 2rem;
+    }
+    @media(max-width:767px){
+        margin-right: 10px;
+        margin-left: -40px;
+    }
+}
+
+.avatar-big {
+    width: 30%; 
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .content-avatar {
+        border-radius: 20px;
+        overflow: hidden;
+        -webkit-box-shadow: 0px 0px 0px 6px rgba(77, 77, 77, 1);
+        -moz-box-shadow: 0px 0px 0px 6px rgba(77, 77, 77, 1);
+        box-shadow: 0px 0px 0px 6px rgba(77, 77, 77, 1);
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        img {
+            height: 100%;
+        }
+    }
+    @media(max-width:767px){
+        width: 100%; 
+        margin-bottom: 20px;
+        .content-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+        }
+    }
+    
+
+}
+
+.content-section {
+    width: calc(100% - 33%);
+    gap: 10px;
+    @media(max-width:767px){
+        width: 100%;
+    }
+}
+
+.description {
+    width: 48%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(77, 77, 77, 1);
+    line-height: 20px !important;
+    @media(max-width:359px){
+        width: 100%;
+    }
+}
+
+.location {
+    width: 48%;
+    border: 1px solid rgba(77, 77, 77, 1);
+    padding: 10px;
+    box-sizing: border-box;
+
+    i {
+        font-size: 4rem;
+    }
+
+    ul {
+        margin: 20px 0;
+
+        li {
+            font-size: .9rem;
+            text-align: center;
+            line-height: 20px !important;
+        }
+    }
+    @media(max-width:359px){
+        width: 100%;
+    }
+}
+
+.e-title {
+    margin: 20px 0 10px
+}
+
+.episodes {
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
+
+    .content-list {
+        align-items: stretch;
+    }
+
+    .episodes-item {
+        line-height: 20px;
+        padding: 8px;
+        box-sizing: border-box;
+        font-size: .9rem;
+        border: 1px solid rgba(77, 77, 77, 1);
+    }
+}

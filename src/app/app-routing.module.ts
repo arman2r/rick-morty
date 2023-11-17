@@ -4,20 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'personajes',
+    redirectTo: 'home/personajes',
     pathMatch: 'full'
   },
   {
-    path: 'personajes',
-    loadComponent: () =>
-      import('./pages/personajes/personajes.component').then((x) => x.PersonajesComponent),
-    children: [
-      {
-        path: 'detalle',
-        loadComponent: () =>
-          import('./pages/detalle-personaje/detalle-personaje.component').then((x) => x.DetallePersonajeComponent),
-      }
-    ]
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((x) => x.HomeModule),
   }
 ];
 

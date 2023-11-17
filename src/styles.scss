@@ -51,6 +51,25 @@ sub{
     box-sizing: border-box;
 }
 
+
+.status-circle {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    border-radius: 100%;
+    background-color: rgb(83, 83, 83);
+}
+
+.container-list {
+    width: 100%;
+    position: relative;
+
+    @media(min-width:992px) {
+        width: 50%;
+    }
+}
+
+
 .w-100{
     width: 100%;
 }

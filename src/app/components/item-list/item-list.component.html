@@ -1,4 +1,4 @@
-<li [id]="results.id" class="w-100 item-pattern">
+<li [id]="results.id" class="w-100 item-pattern"  [routerLink]="['personaje', results.id]">
   <div
     class="w-100 d-flex flex-row align-center-x align-center-y align-between content-item"
   >
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <a class="self-btn" [routerLink]="['./detalle']" [queryParams]="{id:results.id}"><i class="material-icons">chevron_right</i>
+    <a class="self-btn" [routerLink]="['personaje', results.id]"><i class="material-icons">chevron_right</i>
     </a>
   </div>
 </li>

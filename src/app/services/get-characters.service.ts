@@ -13,6 +13,14 @@ export class GetCharactersService {
   getCharacters(page?: number) {
     return this.http.get(`${environment.API_URL}/character/?page=${page}`)
   }
+
+  getCharacter(id?: any) {
+    return this.http.get(`${environment.API_URL}/character/${id}`)
+  }
+
+  getEpisodes(id?: string) {
+    return this.http.get(`${environment.API_URL}/episode/${id}`)
+  }
  
   getData(param1: any): Observable<any> {
     return this.http.get<any>(`${environment.API_URL}character/?name=${param1}`);

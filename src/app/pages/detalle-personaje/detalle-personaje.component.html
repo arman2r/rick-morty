@@ -1,1 +1,92 @@
-<p>detalle-personaje works!</p>
+<div class="flex-wrap align-center-x align-center-y w-100 h-100">
+  <div class="container d-flex align-center-y h-100">
+    <div
+      #listCharacters
+      class="container-list-detail h-100 d-flex flex-wrap align-center-x"
+    >
+      <div
+        class="w-100 d-flex flex-wrap content-items"
+        *ngIf="detalle !== undefined"
+      >
+        <div class="avatar-big">
+            <button class="btn-icon" [routerLink]="['/home']">
+                <i class="material-icons">chevron_left</i>
+            </button>
+          <div class="content-avatar">
+            <img [src]="detalle.image" alt="avatar" />
+          </div>
+        </div>
+        <div class="content-section d-flex flex-wrap">
+          <section class="description d-flex align-center-y flex-column">
+            <ul class="d-flex align-between flex-column h-100">
+              <li>
+                <ul>
+                  <li>
+                    <h1>{{ detalle.name }}</h1>
+                  </li>
+                  <li>{{ detalle.species }}</li>
+                  <li>{{ detalle.gender }}</li>
+                  <li>{{ detalle.type != null ? detalle.type : "" }}</li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li class="d-flex flex-row align-center-x" style="gap: 10px">
+                    <span
+                      class="status-circle"
+                      [style]="
+                        detalle.status === 'Alive'
+                          ? 'background-color:green'
+                          : 'background-color:rgb(83, 83, 83)'
+                      "
+                    ></span>
+                    <span> {{ detalle.status }}</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <div
+            class="location d-flex align-center-x align-center-y flex-column"
+          >
+            <i class="material-icons">language</i>
+            <ul>
+              <li>
+                Locación: <b>{{ detalle.location.name }}</b>
+              </li>
+              <li>
+                Origen: <b>{{ detalle.origin.name }}</b>
+              </li>
+            </ul>
+          </div>
+          <h2 class="w-100 e-title">Episodios</h2>
+
+          <div class="episodes w-100 flex-column parent">
+            <ul
+              class="content-list d-flex flex-row w-100 h-100"
+              style="gap: 10px"
+            >
+              <li
+                *ngFor="let episode of episodes[0]"
+                class="pattern-list h-100"
+              >
+                <ul
+                  class="episodes-item h-100 d-flex flex-column align-between"
+                >
+                  <li>
+                    <ul>
+                      <li>{{ episode.name }}</li>
+                      <li>{{ episode.episode }}</li>
+                      <li>{{ episode.piloto }}</li>
+                    </ul>
+                  </li>
+                  <li><sub>Creado:</sub><br />{{ episode.created }}</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
