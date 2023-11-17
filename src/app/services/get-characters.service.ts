@@ -11,15 +11,15 @@ export class GetCharactersService {
   constructor(private http: HttpClient) { }
 
   getCharacters(page?: number) {
-    return this.http.get(`${environment.API_URL}/character/?page=${page}`)
+    return this.http.get(`${environment.API_URL}character/?page=${page}`)
   }
 
   getCharacter(id?: any) {
-    return this.http.get(`${environment.API_URL}/character/${id}`)
+    return this.http.get(`${environment.API_URL}character/${id}`)
   }
 
   getEpisodes(id?: string) {
-    return this.http.get(`${environment.API_URL}/episode/${id}`)
+    return this.http.get(`${environment.API_URL}episode/${id}`)
   }
  
   getData(param1: any): Observable<any> {
