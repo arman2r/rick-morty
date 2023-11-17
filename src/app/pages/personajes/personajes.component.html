@@ -4,52 +4,73 @@
       <div
         class="w-100 d-flex flex-wrap align-between align-center-x align-center-y haeder-filter"
       >
-        <div class="buscador d-flex align-center-x align-center-y">
-          <input type="text" placeholder="Buscar por nombre, especie y tipo" />
-          <i class="material-icons">search</i>
+        <div class="buscador flex-column">
+          <div class="d-flex align-center-x">
+            <input
+              type="text"
+              placeholder="Buscar por nombre, especie y tipo"
+              #filterSearch 
+            />
+            <button *ngIf="!showCancel" class="btn-search" type="button" (click)="search(filterSearch.value); showCancel = !showCancel"><i class="material-icons">search</i></button>
+            <button *ngIf="showCancel" class="btn-search" type="button" (click)="cancelSearch(filterSearch); showCancel = !showCancel"><i class="material-icons">close</i></button>
+          </div>
+          <span *ngIf="errorSearch" class="animate__animated animate__fadeInUp" style="color: rgb(255, 145, 0)"
+            ><sub>El personaje buscado no se encuentra registrado</sub></span
+          >
         </div>
-        <div class="options-filter">
+        <div class="options-filter d-flex flex-row" style="gap: 10px;">
           <div class="content-submenu">
             <button
               #btnSubmenu
               (click)="openSubmenu(btnSubmenu)"
               class="btn-drop d-flex flex-row align-center-x align-center-y"
               style="gap: 10px"
-            > 
+            >
+              <span>Estatus</span>
               <i class="material-icons">tune</i>
             </button>
-            
           </div>
           <div class="submenu-filter" *ngIf="openMenu">
             <ul>
+                
               <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por alive</span>
+                <input type="radio" name="optFilter" id="alive" value="alive" (change)="isSelected('status=',$any($event.target).value)" />
+                <label for="alive">Filtrar por alive</label>
               </li>
               <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por dead</span>
+                <input type="radio" name="optFilter" id="dead" value="dead" (change)="isSelected('status=',$any($event.target).value)" />
+                <label for="dead">Filtrar por dead</label>
+              </li> 
+              
+            </ul>
+          </div>
+          <div class="content-submenu">
+            <button
+              #btnSubmenu2
+              (click)="openSubmenuTwo(btnSubmenu2)"
+              class="btn-drop d-flex flex-row align-center-x align-center-y"
+              style="gap: 10px"
+            >
+              <span>Genero</span>
+              <i class="material-icons">tune</i>
+            </button>
+          </div>
+          <div class="submenu-filter" *ngIf="openMenu2">
+            <ul>
+                
+                
+              <li class="d-flex flex-row align-center-x">
+                <input type="radio" name="optFilter" id="female" value="female" (change)="isSelected('gender=',$any($event.target).value)"  />
+                <label for="female">Filtrar por female</label>
               </li>
               <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por unknown</span>
+                <input type="radio" name="optFilter" id="male" value="male" (change)="isSelected('gender=',$any($event.target).value)"  />
+                <label for="male">Filtrar por male</label>
               </li>
               <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por female</span>
-              </li>
-              <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por male</span>
-              </li>
-              <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por genderless</span>
-              </li>
-              <li class="d-flex flex-row align-center-x">
-                <input type="checkbox" />
-                <span>Filtrar por unknown</span>
-              </li>
+                <input type="radio" name="optFilter" id="genderless" value="genderless" (change)="isSelected('gender=',$any($event.target).value)"  />
+                <label for="genderless">Filtrar por genderless</label>
+              </li> 
             </ul>
           </div>
         </div>

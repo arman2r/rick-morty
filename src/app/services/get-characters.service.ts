@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { Observable, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,18 @@ export class GetCharactersService {
   getCharacters(page?: number) {
     return this.http.get(`${environment.API_URL}/character/?page=${page}`)
   }
-
-  filterCharacter(name:string){
-    return this.http.get(`${environment.API_URL}/character/?name=${name}`)
+ 
+  getData(param1: any): Observable<any> {
+    return this.http.get<any>(`${environment.API_URL}character/?name=${param1}`);
   }
+
+  getData2(param2: any): Observable<any> {
+    return this.http.get<any>(`${environment.API_URL}character/?species=${param2}`);
+  }
+
+  getDataCriteria(param: any): Observable<any> {
+    return this.http.get<any>(`${environment.API_URL}character/?${param}`);
+  }
+
+   
 }

@@ -16,13 +16,13 @@
         <div class="d-flex flex-row align-center-x" style="gap: 10px;">
           <span
             class="status-circle"
-            [ngStyle]="{ 'background-color:green': results.status === 'Alive' }"
+            [style]="results.status === 'Alive' ? 'background-color:green' : 'background-color:rgb(83, 83, 83)'"
           ></span>
           <sub>Status</sub>
         </div>
       </div>
     </div>
-    <a class="self-btn" href="#"><i class="material-icons">chevron_right</i>
+    <a class="self-btn" [routerLink]="['./detalle']" [queryParams]="{id:results.id}"><i class="material-icons">chevron_right</i>
     </a>
   </div>
 </li>

@@ -11,11 +11,13 @@ const routes: Routes = [
     path: 'personajes',
     loadComponent: () =>
       import('./pages/personajes/personajes.component').then((x) => x.PersonajesComponent),
-  },
-  {
-    path: './:personaje',
-    loadComponent: () =>
-      import('./pages/detalle-personaje/detalle-personaje.component').then((x) => x.DetallePersonajeComponent),
+    children: [
+      {
+        path: 'detalle',
+        loadComponent: () =>
+          import('./pages/detalle-personaje/detalle-personaje.component').then((x) => x.DetallePersonajeComponent),
+      }
+    ]
   }
 ];
 
