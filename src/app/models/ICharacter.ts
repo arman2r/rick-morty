@@ -1,15 +1,5 @@
-export interface IPaginate {
-    info?: IPropertiesPaginate;
-    results?: Array<ICharacter>
-}
-
-export interface IPropertiesPaginate {
-    count?: number,
-    pages?: number,
-    next?: string,
-    prev?: string
-}
- 
+import { ILocation } from "./ILocation";
+import { IOrigin } from "./IOrigin";
 
 export interface ICharacter {
     id: number;
@@ -24,16 +14,5 @@ export interface ICharacter {
     episode: Array<string>,
     url:string,
     created: string
-
-}
-
-export interface IOrigin{ 
-    name: string,
-    url: string
-}
-
-export interface ILocation {
-    name: string,
-    url: string
-}
+}  
  

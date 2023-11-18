@@ -3,7 +3,8 @@ import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@
 import { Observable, Subject, catchError, filter, forkJoin, map, of } from 'rxjs';
 import { ItemListComponent } from 'src/app/components/item-list/item-list.component';
 import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
-import { ICharacter, IPaginate } from 'src/app/models/ICharacter';
+import { ICharacter } from 'src/app/models/ICharacter';
+import { IPaginate } from 'src/app/models/IPaginateProperties';
 import { GetCharactersService } from 'src/app/services/get-characters.service';
 
 @Component({
