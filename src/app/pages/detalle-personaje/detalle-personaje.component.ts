@@ -21,7 +21,7 @@ register();
 export class DetallePersonajeComponent {
   public id!: number;
   detalle!: ICharacter;
-  episodes: any[] = []
+  allEpisodes: any[] = []
   @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
   index = 0
   swiperConfig: SwiperOptions = { 
@@ -46,11 +46,9 @@ export class DetallePersonajeComponent {
   constructor(private getDataService: GetCharactersService, private router: Router, private routerParam: ActivatedRoute){}
 
   ngOnInit() { 
-    this.id = Number(this.routerParam.snapshot.paramMap.get('id'));
-    console.log(this.id)
+    this.id = Number(this.routerParam.snapshot.paramMap.get('id')); 
     const getEpisodes: any[] = []
-    this.getDataService.getCharacter(this.id).subscribe((res:any) => {
-      console.log(res)
+    this.getDataService.getCharacter(this.id).subscribe((res:any) => { 
       //console.log(res.episode.url.split("/").pop())
       this.detalle = res
       const episodes: string[] = [] 
@@ -58,24 +56,20 @@ export class DetallePersonajeComponent {
         episodes.push(episode.split("/").pop())
       })
       const strEpisodes = episodes.join(',')
-      this.getDataService.getEpisodes(strEpisodes).subscribe((res: any) => {
-        //console.log('episodios',res)
-        getEpisodes.push(res)
-        this.episodes = getEpisodes;
-        console.log('episodios', this.episodes)
-        /*const characters: any[] = []
-        res.map((episode:any) => {
-          characters.push(episode.characters[Math.floor(Math.random() * episode.characters.length)].split("/").pop())
-        }) 
-        //console.log('characters',characters)
-        this.getDataService.getCharacter(characters.join(',')).subscribe(personajes => {
-          console.log('personajes', personajes)
-          console.log('episodes', getEpisodes[0])
-          
-        })*/
+      //console.log('ids',strEpisodes)
+      this.getDataService.getEpisodes(strEpisodes).subscribe((res: any) => { 
+        if(res.length !== undefined){
+          this.allEpisodes = res;
+        } else{
+          this.allEpisodes.push(res)
+        }  
+
         this.swiper.nativeElement.swiper.activeIndex = this.index;
         Object.assign(this.swiper.nativeElement, this.swiperConfig);
         this.swiper.nativeElement.initialize();
+      }, error => {
+        //console.log('no hay episodios registrados')
+        this.allEpisodes = []
       })
     })
   }

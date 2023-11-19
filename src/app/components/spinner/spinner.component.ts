@@ -21,7 +21,7 @@ export class SpinnerComponent {
   }
 
   ngOnInit() {
-    console.log(this.loading.nativeElement)
+    //console.log(this.loading.nativeElement)
     if(this.showSpinner != false){
       setTimeout(() => {
         this.loading.nativeElement.classList.add('removeSpinner')
@@ -36,9 +36,9 @@ export class SpinnerComponent {
   }
 
   statusItem(value: boolean) {
-    console.log('entro value', value)
+    //console.log('entro value', value)
     this.statusEvent.closed = value;
-    console.log(this.statusEvent)
+    //console.log(this.statusEvent)
   }
 
 }

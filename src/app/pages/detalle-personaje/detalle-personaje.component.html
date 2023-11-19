@@ -68,7 +68,7 @@
               <swiper-container #swiper [config]="swiperConfig" 
                 class="pattern-list w-100 h-100 episodes"
               >
-                <swiper-slide *ngFor="let episode of episodes[0]" class="episodes-item">
+                <swiper-slide *ngFor="let episode of allEpisodes" class="episodes-item">
                   <ul class="w-100 h-100">
                     <li>{{ episode.name }}</li>
                     <li>{{ episode.episode }}</li>

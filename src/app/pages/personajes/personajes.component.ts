@@ -81,18 +81,18 @@ export class PersonajesComponent implements AfterViewInit {
   }
 
   search(value: any) {
-    console.log('consulta', value)
+    //console.log('consulta', value)
     if (value.length !== 0) {
       forkJoin({
         first: this.characterService.getData(value).pipe(this.handleRequest().bind(this)),
         second: this.characterService.getData2(value).pipe(this.handleRequest().bind(this))
       }).pipe(
         map((result) => {
-          console.log('Final Object', result);
+          //console.log('Final Object', result);
           return Object.values(result);
         })
       ).subscribe(res => {
-        console.log(res)
+        //console.log(res)
         res.map(item => {
           if (item !== null) {
             this.characters = []
